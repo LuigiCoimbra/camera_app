@@ -1,6 +1,8 @@
 <template>
   <div class="picture">
-    <canvas></canvas>
+    <div class="evidence">
+      <canvas></canvas>
+    </div>
   </div>
 </template>
 
@@ -16,15 +18,21 @@ export default {
   width: 90%;
   height: auto;
 
-  padding: 25px;
+  padding: 15px;
   box-sizing: border-box;
-  canvas {
+  box-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.35);
+  .evidence {
     display: block;
-    width: 100%;
+    width: 50%;
+    height: auto;
+    canvas {
+      display: block;
+      width: 50%;
 
-    margin: 0 auto;
+      margin: 0 auto;
 
-    box-shadow: 4px 4px 12px 0px transparentize($color: #171717, $amount: 0.5);
+      box-shadow: 4px 4px 12px 0px transparentize($color: #171717, $amount: 0.5);
+    }
   }
 }
 </style>
