@@ -14,18 +14,19 @@
           v-model="toggle_exclusive"
           style="display: grid; width: 100%; justify-items: center; gap: 5px"
         >
+          <!-- eslint-disable vue/no-use-v-if-with-v-for -->
           <v-btn
-            v-for="parceiro in parceiros"
-            :key="parceiro.codparc"
+            v-for="hospXparc in hospXparcs"
+            :key="hospXparc.codparc"
             style="width: 85%"
           >
-            {{ parceiro.name }}
+            {{ hospXparc.name }}
           </v-btn>
         </v-btn-toggle>
       </v-card-actions>
     </v-card>
-    <v-btn style="position: fixed; bottom: 5px; width: 85%" href="./">
-      Capturar Evidencias
+    <v-btn style="position: fixed; bottom: 5px; width: 85%" @click="nextParc()">
+      Selecionar Evidencias
     </v-btn>
   </div>
 </template>
@@ -34,6 +35,8 @@ export default {
   name: "ParcCard",
   data: function () {
     return {
+      toggle_exclusive: null,
+      hospXparcs: [],
       parceiros: [
         {
           name: "Meditronic",
@@ -52,6 +55,34 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    initParc() {
+      console.log(this.parceiros[0].codhosp);
+      for (var x = 0; this.parceiros.length > x; x++) {
+        if (this.parceiros[x].codhosp == localStorage.getItem("codhosp")) {
+          this.hospXparcs = this.parceiros.filter(
+            (parceiro) => parceiro.codhosp == localStorage.getItem("codhosp")
+          );
+          console.log(this.hospXparcs);
+        }
+      }
+    },
+    nextParc() {
+      if (this.toggle_exclusive != null) {
+        localStorage.setItem(
+          "parcName",
+          this.parceiros[this.toggle_exclusive].name
+        );
+        this.$router.push("/evidence");
+        // console.log(localStorage.getItem("codhosp"));
+      } else {
+        alert("É necessario selecionar 1 parceiro");
+      }
+    },
+  },
+  beforeMount() {
+    this.initParc();
   },
 };
 </script>

@@ -4,6 +4,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
       padding: 10px;
     "
   >
@@ -24,8 +25,8 @@
         </v-btn-toggle>
       </v-card-actions>
     </v-card>
-    <v-btn style="position: fixed; bottom: 5px; width: 85%" href="./parc">
-      Proximo passo
+    <v-btn style="position: fixed; bottom: 5px; width: 85%" @click="next">
+      Selecionar Parceiro
     </v-btn>
   </div>
 </template>
@@ -34,7 +35,7 @@ export default {
   name: "LoginCard",
   data: function () {
     return {
-      toggle_exclusive: 2,
+      toggle_exclusive: null,
       hospitals: [
         {
           name: "Vivale SJC",
@@ -46,6 +47,27 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    next() {
+      if (this.toggle_exclusive != null) {
+        localStorage.setItem(
+          "codhosp",
+          this.hospitals[this.toggle_exclusive].codhosp
+        );
+        localStorage.setItem(
+          "hospName",
+          this.hospitals[this.toggle_exclusive].name
+        );
+        this.$router.push("/parc");
+        // console.log(localStorage.getItem("codhosp"));
+      } else {
+        alert("É necessario selecionar 1 hospital");
+      }
+    },
+  },
+  beforeMount() {
+    localStorage.clear();
   },
 };
 </script>

@@ -1,4 +1,4 @@
-<template>
+<template style="display: hidden">
   <div class="picture">
     <div class="evidence">
       <canvas></canvas>
@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .picture {
-  display: block;
+  display: none;
   width: 90%;
   height: auto;
 
@@ -22,11 +22,11 @@ export default {
   box-sizing: border-box;
   box-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.35);
   .evidence {
-    display: block;
+    display: hidden;
     width: 50%;
     height: auto;
     canvas {
-      display: block;
+      display: hidden;
       width: 50%;
 
       margin: 0 auto;

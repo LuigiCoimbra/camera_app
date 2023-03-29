@@ -1,5 +1,5 @@
 <template>
-  <div class="parc">
+  <div class="parc" style="width: inherit">
     <ParcCard />
   </div>
 </template>

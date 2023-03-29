@@ -1,3 +1,4 @@
+<!--  -->
 <template>
   <div class="camera">
     <video autoplay class="feed"></video>
@@ -6,8 +7,15 @@
 </template>
 
 <script>
+/* eslint-disable prettier/prettier */
 export default {
   name: "HelloWorld",
+  data: function () {
+    return {
+      picId: 0,
+      picData: [],
+    };
+  },
   methods: {
     init() {
       if (
