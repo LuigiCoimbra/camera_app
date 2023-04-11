@@ -1,4 +1,12 @@
 # camera_app
+```
+Web App desenvolvido para facilitar a captura de fotos para evidenciar estado de produtos, equipamentos, etc.
+```
+
+## Ultimas Atualizações
+```
+Foi desenvolvida uma forma de filtrar o local onde se encontra o produto utilizando o Cliente/Parceiro
+```
 
 ## Project setup
 ```
